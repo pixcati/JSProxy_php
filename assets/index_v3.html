@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
 <head>
-  <title>Page Sandbox</title>
+  <title>帮你古狗</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
   <base target="_blank">
   <style>
     body {
-      padding: 0 0.5em;
+      padding: 0 3em;
     }
     .box {
       margin-top: 1em;
@@ -32,7 +32,7 @@
     <input id="txtURL" type="text" value="www.google.com" autofocus>
   </div>
   <div class="box">
-    <button id="btnGo">Go</button>
+    <button id="btnGo">访问</button>
   </div>
   <div class="box">
     <span>切换线路:</span>
@@ -56,17 +56,11 @@
     sw.addEventListener('message', onSwMsg)
     sendMsgToSw(PAGE_READY_CHECK)
 
-    function popup(url) {
-      const link = document.createElement('a')
-      link.rel = 'noopener noreferrer'
-      link.href = url
-      link.click()
-    }
-
     btnGo.onclick = function() {
       const text = txtURL.value.trim()
       if (text) {
-        popup('./-----' + text)
+        const url = './-----' + text
+        open(url, '_blank', 'noopener,noreferrer')
       }
     }
     txtURL.onkeypress = function(e) {
@@ -122,14 +116,14 @@
     const SITE_LIST = [
       ['google', ''],
       ['youtube', ''],
-      ['twitter', 'twitter.com/google'],
+      ['twitter', 'twitter.com/'],
       ['flickr', ''],
       ['quora', 'www.quora.com/topic/JavaScript-programming-language'],
       ['twitch', 'www.twitch.tv/'],
       ['reddit', ''],
       ['wiki', 'zh.wikipedia.org/'],
       ['gist', 'gist.github.com/'],
-      ['facebook', 'facebook.com/Google/'],
+      ['facebook', 'facebook.com/'],
       ['blogger', ''],
     ]
 
