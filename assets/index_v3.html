@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
   <base target="_blank">
   <style>
-    body {
+    body,html {
       padding: 0 3em;
     }
     .box {
@@ -21,15 +21,35 @@
     #btnGo {
       width: 100%;
       font-size: 1.5em;
+      background-color: #4caf50;
+      color: #ff;
     }
     #list a {
       margin: 1em;
+    }
+    #foot {
+        text-align: center;
+				padding :2em 0;
+    }
+     #foot a {
+        margin: 2px;
+				color: #262626;
+				font-weight: 500;
+    }
+    #foot p {
+				color: #333;
+				font-weight: 800;
+    }
+    @media(max-width: 991px) {
+    body {
+      padding: 0;
+    }
     }
   </style>
 </head>
 <body>
   <div class="box">
-    <input id="txtURL" type="text" value="www.google.com" autofocus>
+    <input id="txtURL" type="text" value="www.v2ex.com" autofocus>
   </div>
   <div class="box">
     <button id="btnGo">访问</button>
@@ -39,6 +59,9 @@
     <select id="selNode"></select>
   </div>
   <div class="box" id="list">
+  </div>
+  <div id="foot">
+  <p>代理程序基于<a href="https://gitee.com/mirrors/jsproxy">JSproxy</a>,本站由<a href="http://svvme.com/">Pixcat</a>搭建</p>
   </div>
   <script>
     const PAGE_CONF_SET = 110
