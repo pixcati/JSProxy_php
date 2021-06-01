@@ -1,10 +1,6 @@
-RewriteEngine On
+ewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?http/(.*?)/?$ /index.php?url=$1 [L]
-
-RewriteEngine On
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://js.svvme.com/$1 [R,L]
 
 DirectoryIndex index.html index.php
