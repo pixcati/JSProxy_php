@@ -2,7 +2,7 @@ jsproxy_config({
   // 当前配置的版本（记录在日志中，用于排查问题）
   // 每次修改配置，该值需要增加，否则不会生效。
   // 默认每隔 5 分钟自动下载配置，若想立即验证，可通过隐私模式访问。
-  ver: '312',
+  ver: '401',
 
   // 通过 CDN 加速常用网站的静态资源（实验中）
   static_boost: {
@@ -66,7 +66,7 @@ jsproxy_config({
   /**
    * 自定义注入页面的 HTML
    */
-  inject_html: ',<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/sentsin/layui@master/dist/css/layui.css" /><div class="layer-footer" style="z-index: 10; position: fixed; text-align: right; margin-left: -40px; bottom: 50px; width:100%;"><a href="https://js.svvme.com/" target="_blank" style="background-color: #fb7299;" type="button" class="layui-btn layui-btn-nomal layui-btn-radius"><i class="layui-icon" style="font-size: 25px;">&#xe615;</i>返回</a></div>',
+  inject_html: ',<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/sentsin/layui@master/dist/css/layui.css" /><div class="layer-footer" style="z-index: 10; position: fixed; text-align: right; margin-left: -40px; bottom: 50px; width:100%;"><button onclick="backhome()"style="background-color: #fb7299;" type="button" class="layui-btn layui-btn-nomal layui-btn-radius"><i class="layui-icon" style="font-size: 25px;">&#xe615;</i>上级</button></div><script>function backhome() {location.assign("https://js.svvme.com/index.php");}</script>',
 
   /**
    * URL 自定义处理（设计中）
@@ -76,9 +76,9 @@ jsproxy_config({
       replace: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png'
     },
     'https://www.pornhub.com/': {
-      redir: 'https://php.net/'
+      redir: 'https://pornhub.com/'
     },
-    'http://haha.com/': {
+    'https://js.svvme.com/': {
       content: '<h1>Hello</h1>'
     },
   }
