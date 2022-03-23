@@ -1,229 +1,49 @@
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>让我帮你谷歌一下 @Pixcat</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="">
-<link rel="shortcut icon" href="favicon.ico">
-<base target="_blank">
-
-
-<style>
-    body,
-    html {
-        background: #eee;
-		cursor: url(img/huaji.cur) , auto;
-    }
-
-    html,
-    h1.
-	footer,	{
-		font: 18px BlinkMacSystemFont,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",sans-serif;
-    }
-
-    h1 {
-        font-size: 80px;
-        line-height: 120px;
-        font-weight: 200;
-        text-align: center;
-        margin: 2.2em auto 1em;
-        color: #333;
-        position: relative;
-     
-    }
-
-    form {
-        position: relative;
-        width: 545px;
-        margin: 0 auto
-    }
-
-    form input {
-        -webkit-appearance: none;
-        margin: 2px;
-        font-size: 22px;
-        line-height: 30px;
-        padding: 7px 13px;
-        vertical-align: top;
-        border-radius: 30px;
-		border: 1px solid #000;
-		background: #fff;
-        width: 470px
-    }
-
-    form input:focus {
-        outline: 0
-    }
-
-    form input::-webkit-search-decoration {
-        display: none
-    }
-
-    form button {
-		border: 0;
-		background: 0;
-        margin-left: 2px;
-		line-height: 38px;
-        cursor: pointer;
-        text-align:center;
-    }
-
-    #提示文字 {
-        font-size: 1.4em;
-        text-align: center;
-        color: #999;
-        padding: 3em 0 5em
-    }
-
-    #鼠标 {
-        background: url(img/mouse.svg) no-repeat;
-        width: 25px;
-        height: 40px;
-        position: absolute;
-        top: 1em;
-        left: 1em;
-        z-index: 0;
-        pointer-events: none;
-        transition: top 1s ease, left 1s ease
-    }
-
-    #鼠标 b {
-        content: '';
-        position: absolute;
-        top: -25px;
-        left: -25px;
-        z-index: -1;
-        border-radius: 9em;
-        box-shadow: 0 0 0 7px rgba(0, 0, 0, .4);
-        width: 50px;
-        height: 50px;
-        opacity: 0
-    }
-
-    #鼠标.左键点击 b {
-        animation: scale 0.8s ease
-    }
-
-    @keyframes scale {
-        from {
-            transform: scale(0);
-            opacity: 1
+    
+    <head>
+        <meta charset=utf-8>
+    </head>
+    
+    <body id=t>
+        <svg xmlns=http://www.w3.org/2000/svg width=100% height=100% viewBox="0 0 100 100" preserveAspectRatio=xMidYMid fill=none>
+            <circle cx=50 cy=50 r=25.944 stroke=#93dbe9>
+                <animate attributeName=r calcMode=spline values=0;40 keyTimes=0;1 dur=1 keySplines="0 0.2 0.8 1" begin=-0.5s repeatCount=indefinite stroke-width=2 />
+                <animate attributeName=opacity calcMode=spline values=1;0 keyTimes=0;1 dur=1 keySplines="0.2 0 0.8 1" begin=-0.5s repeatCount=indefinite stroke-width=2 />
+            </circle>
+            <circle cx=50 cy=50 r=40 stroke=#689cc5>
+                <animate attributeName=r calcMode=spline values=0;40 keyTimes=0;1 dur=1 keySplines="0 0.2 0.8 1" begin=0s repeatCount=indefinite stroke-width=2 />
+                <animate attributeName=opacity calcMode=spline values=1;0 keyTimes=0;1 dur=1 keySplines="0.2 0 0.8 1" begin=0s repeatCount=indefinite stroke-width=2 />
+            </circle>
+        </svg>
+        <script>
+        function a() {
+            var e = Date.now();
+            try {
+                var t = +sessionStorage._ts || 0;
+                if ((sessionStorage._ts = e) - t < 100) return setTimeout(a, 5e3)
+            } catch (r) {}
+            location.reload()
         }
-
-        5% {
-            opacity: 1
+        function i(e) {
+            n(e.message)
         }
+        function n(e) {
+            t.innerHTML = e
+        }! function s() {
+            if (self.isSecureContext) if (self.ReadableStream) {
+                    var e = navigator.serviceWorker;
+                    if (e) e.register(function r() {
+                            return location.pathname.replace(/\/-+https?:.+/, "").replace(/\w+\.\w+$/, "").replace(
+                                /\/*$/, "/")
+                        }() + "sw.js").then(a)["catch"](i);
+                    else {
+                        var t = navigator.userAgent;
+                        /Firefox/.test(t) ? n("本网站不支持 FireFox 隐身模式") : /iPhone|iPad/.test(t) && n("iOS 上请使用 Safari 浏览器")
+                    }
+                } else n("请使用最新的 HTML5 浏览器");
+                else n("本程序需要 HTTPS 站点")
+        }()
+        </script>
+    </body>
 
-        to {
-            transform: scale(3);
-            opacity: 0
-        }
-    }
-
-    footer {
-		position: relative;
-		padding-top: 3em;
-		text-align: center;
-    }
-
-    footer a {
-        margin: 0 1em;
-        color: #000;
-        text-decoration: none;
-    }
-	
-	footer p {
-		color: #999;
-	}
-	
-	footer p  a {
-		margin: 2px;
-		color: #2196f3;
-	}
-	
-	@media(max-width: 991px) {
-		h1 {
-		font-size: 36px;
-		}
-	
-	    form {
-        width: 90%;
-    }
-	
-		form input {
-		width: 80%;
-		}
-	
-	}
-</style>
-</head>
-
-<body>
-
-<h1>帮你谷歌</h1>
-<form id="搜索框"><input name="text" type="search" placeholder="输入关键字" autocomplete="off"> <button><a><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a></button></form>
-
-<p id="提示文字">输入搜索关键字
-<div id="鼠标"><b></b></div>
-
-<script>
-    ! function() {
-        for (var t, n = encodeURIComponent, o = location.search.substr(1).split("&"), e = o.length, i = {}; e--;) t = o[e].split("="), i[t.shift()] = decodeURIComponent(t.join("="));
-        i.ss;
-        var s, c = function(t, n, o) {
-                var e = -1,
-                    i = function() {
-                        e++, item = t[e], item ? n.call(e, item, i) : o && o()
-                    };
-                i()
-            },
-            a = function(t, n) {
-                鼠标.style.cssText = "top:" + t + "px;left:" + n + "px;"
-            },
-            u = function(t) {
-                提示文字.innerHTML = t
-            },
-            r = function(t, n) {
-                s = setTimeout(t, n)
-            },
-            f = 搜索框.text,
-            l = function(t) {
-                clearTimeout(s), f.value = "text", f.blur(), history.pushState({}, t, location.pathname + "?history=" + n(t)), a(搜索框.offsetTop + 25, 搜索框.offsetLeft + 搜索框.offsetWidth / 2), u("查找 [" +  decodeURIComponent(n(t)) + "] ."),  
-				r(function() {
-                    鼠标.classList.add("左键点击"), r(function() {
-                        f.focus(), u("查找 [" +  decodeURIComponent(n(t)) + "] .."), r(function() {
-                            鼠标.classList.remove("左键点击"), c(t.split(""), function(n, o) {
-                                var e = this + 1;
-                                f.value = t.substr(0, e), f.selectionStart = f.selectionEnd = e, r(o, 50 + 250 * Math.random())
-                            }, function() {
-                                a(搜索框.offsetTop + 25, 搜索框.offsetLeft + 搜索框.offsetWidth - 35), u("查找 [" +  decodeURIComponent(n(t)) + "] ..."), r(function() {
-                                    鼠标.classList.add("左键点击"), u("转到 jsproxy ..."), r(function() {
-                                        location.href = "https://js.svvme.com/-----https://go-xyz.xyz/search?q=" + n(t)
-                                    }, 700)
-                                }, 1200)
-                            })
-                        }, 800)
-                    }, 100)
-                }, 1100)
-            };
-        搜索框.onsubmit = function(t) {
-            t.preventDefault();
-            var n = f.value.replace(/^\s+|\s+$/g, "");
-            if (!n) return f.focus(), void u("请正确输入搜索关键词");
-            l(n)
-        };
-    }()
-</script>
-
-<footer>
-<a href="http://oking.top/">我的收藏</a>
-<a href="http://blog.svvme.com/">我的博客</a>
-<a href="http://svvme.com/">@Pixcat</a>
-<br>
-<p>前端扒皮自<a href="http://buhuibaidu.me/">buhuibaidu.me</a>，代理程序使用<a href="https://hu60.cn/q.php/bbs.topic.91164.html">PHP版的JSproxy</a>，整站备份在<a href="https://github.com/pixcati/JSproxy_php">Github</a></p>
-</footer>
- 
-</p>
-<body>
 </html>
